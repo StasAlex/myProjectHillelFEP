@@ -2,9 +2,10 @@ import _ from 'lodash';
 // import createMenu from './menu';
 // var menu = createMenu(['Главная', "Обо мне", "Портфолио"], 'menu');
 // document.body.appendChild(menu);
-import jquery from "jquery";
+// import jquery from "jquery";
 window._ = require('lodash');
 import '../scss/style.scss';
+require('jquery');
 // import Icon from '../img/phones.png';
 
 
