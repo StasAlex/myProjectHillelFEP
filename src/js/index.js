@@ -40,7 +40,7 @@ window.addEventListener('load', function loadGame() {// when the DOM loaded swit
     };
 
     function createGameField(height, width) {
-        $(body).css('background', 'white');
+        //$(body).css('background', 'white');
         var rows = [],
             cells = [];
         for (let i = 0; i < height; i++) {
