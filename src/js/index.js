@@ -1,8 +1,11 @@
 import _ from 'lodash';
+import createMenu from './menu';
+var menu = createMenu(['Главная', "Обо мне", "Портфолио"], 'menu');
+document.body.appendChild(menu);
 
 // window._ = require('lodash');
-import './style.scss';
-import Icon from './img/phones.png';
+import '../scss/style.scss';
+// import Icon from '../img/phones.png';
 
 
 function component() {
@@ -26,4 +29,5 @@ console.log(_.isEqual(1, 2));
 console.log("GoodBye");
 
 document.body.appendChild(component());
+
 

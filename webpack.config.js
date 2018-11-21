@@ -1,18 +1,25 @@
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: './src/index.js',
+    entry: [
+    './src/js/index.js',
+    './src/scss/style.scss',
+],
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        filename: './js/bundle.js',
+        path: path.resolve(__dirname, './dist/'),
+        publicPath: 'dist/'
     },
 
     devtool: "source-map",
 
-    // resolve: {
-    //     modulesDirectories: ['node_modules']
-    // },
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        compress: true,
+        port: 9000
+    },
 
     module: {
         rules: [
@@ -55,5 +62,22 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    plugins: [
+        new CopyWebpackPlugin([
+            {
+                from: "./src/fonts/",
+                to: "./fonts"
+            },
+            {
+                from: "./src/img/",
+                to: './img'
+            },
+            {
+                from: './src/index.html',
+                to: "./"
+            }
+        ])
+    ]
+
 };
