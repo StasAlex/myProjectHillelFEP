@@ -28307,7 +28307,8 @@ window.addEventListener('load', function loadGame() {
   ;
 
   function createGameField(height, width) {
-    //$(body).css('background', 'white');
+    var url = "http://i4.cdn-image.com/__media__/pics/8243/bg.gif";
+    $(body).css('background', 'url(' + url + ')');
     var rows = [],
         cells = [];
 
