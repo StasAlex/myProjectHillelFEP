@@ -14,10 +14,10 @@ window.addEventListener('load', function loadGame() {// when the DOM loaded swit
 
     var gameField = $('.gameField');
     var go = $('#go');
-    var body = $(".body");
+    var body = $(document.body);
     var clicked = new Audio('https://raw.githubusercontent.com/emasys/webDev/master/ticgame/sound/click.mp3');
     var twoSimilar = new Audio('https://raw.githubusercontent.com/emasys/webDev/master/ticgame/sound/draw.mp3');
-    var won = new Audio('https://raw.githubusercontent.com/emasys/webDev/master/ticgame/sound/victory.mp3');;
+    var won = new Audio('https://raw.githubusercontent.com/emasys/webDev/master/ticgame/sound/victory.mp3');
 
     getJsonFile();//request of fieldSize
 
@@ -40,8 +40,10 @@ window.addEventListener('load', function loadGame() {// when the DOM loaded swit
     };
 
     function createGameField(height, width) {
-        var url = "http://i4.cdn-image.com/__media__/pics/8243/bg.gif";
-        $(body).css('background', 'url(' + url + ')');
+        var url = "https://picsum.photos/1600/1200/?random";
+
+        $(body).css('background', 'url(' + url + ') no-repeat');
+        $(body).css('background-size', 'cover');
         var rows = [],
             cells = [];
         for (let i = 0; i < height; i++) {
@@ -54,7 +56,19 @@ window.addEventListener('load', function loadGame() {// when the DOM loaded swit
                 cells[j].index = i + ',' + j;
                 $(rows[i].append(cells[j]));
             }
-        }
+        };
+
+
+        var gameFieldHeight = height*($(".cell")[0].clientHeight + 2);
+        var gameFieldWidth = width*($(".cell")[0].clientWidth + 2);
+        console.log(gameFieldWidth);
+        console.log(gameFieldHeight);
+        var gameFieldBackgrdURL = 'url(https://picsum.photos/' + gameFieldWidth + '/'+ gameFieldHeight + '/?random) no-repeat';
+        console.log(gameFieldBackgrdURL);
+        $(gameField).css("background", gameFieldBackgrdURL);
+        $(gameField).css("background-size", "cover");
+        $(gameField).css("width", gameFieldWidth);
+        console.log(gameField);
         $('.title').text('Open all pictures').css("font-size", "20px");
 
     };
@@ -133,9 +147,9 @@ window.addEventListener('load', function loadGame() {// when the DOM loaded swit
         var size = $('.cell');
 
         if (win.length === size.length) {
-            cleanGamefield();
+            // cleanGamefield();
             $('.title').text('You are the best!!!').css({"text-transform": "uppercase","font-size": "50px"});
-            $('.body').css('background', 'red');
+            // $('.body').css('background', 'red');
             won.play();
         }
     }
