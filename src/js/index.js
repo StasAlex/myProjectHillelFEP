@@ -1,12 +1,34 @@
-import _ from 'lodash';
+
+//
+// Тестовое задание:
+// Простое приложение, реализующее игру "Найди 2 одинаковые картинки"
+// (пример тут: http://maminsite.ru/early.files/games%20boy/Wally.html)
+//
+//  Требования:
+// Размеры поля являются динамическими(то есть скажем 6 х 6 (иконок), 5 х 4, и так далее).
+// Приложение должно получать размеры поля из вне, обращаясь к скрипту
+// http://kde.link/test/get_field_size.php. Гарантируется, что скрипт отдает всегда значения,
+// произведение которых является четным числом, что является обязательным условием возможности окончания игры.
+// Максимальный размер поля - 8x8.
+// Данные о размерах приходят в формате JSON, пример: {"width":"5", "height":"8"}.
+//
+// Графика, должна загружаться с сервера, то есть не быть "вшитой" в приложение.
+// Со списком графических файлов и путями до них можно ознакомиться, открыв в браузере
+// http://kde.link/test/
+//
+// Страницу со ссылками разбирать не обязательно. Достаточно просто скопировать и вставить адреса до файлов
+// в код программы.
+//
+// Язык разработки приложения: HTML5 (без использования canvas), JS, CSS3.
+// import _ from 'lodash';
 // import createMenu from './menu';
 // var menu = createMenu(['Главная', "Обо мне", "Портфолио"], 'menu');
 // document.body.appendChild(menu);
 // import jquery from "jquery";
-window._ = require('lodash');
+// window._ = require('lodash');
 import '../scss/style.scss';
 require('jquery');
-// import Icon from '../img/phones.png';
+
 
 
 
@@ -61,14 +83,13 @@ window.addEventListener('load', function loadGame() {// when the DOM loaded swit
 
         var gameFieldHeight = height*($(".cell")[0].clientHeight + 2);
         var gameFieldWidth = width*($(".cell")[0].clientWidth + 2);
-        console.log(gameFieldWidth);
-        console.log(gameFieldHeight);
+
         var gameFieldBackgrdURL = 'url(https://picsum.photos/' + gameFieldWidth + '/'+ gameFieldHeight + '/?random) no-repeat';
-        console.log(gameFieldBackgrdURL);
+
         $(gameField).css("background", gameFieldBackgrdURL);
         $(gameField).css("background-size", "cover");
         $(gameField).css("width", gameFieldWidth);
-        console.log(gameField);
+
         $('.title').text('Open all pictures').css("font-size", "20px");
 
     };
@@ -158,7 +179,7 @@ window.addEventListener('load', function loadGame() {// when the DOM loaded swit
         clicked.play();
         addActive(e);
 
-       var active = $('.active');
+        var active = $('.active');
         if (active.length === 2) {
 
             var pictureStyle1 = active[0].getAttribute('style');
