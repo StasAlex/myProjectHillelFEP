@@ -1,5 +1,5 @@
 Hello!
-It's my first game on GitHub.Don't be angry.
+It's my first app on GitHub.
 
     Just push button [ Clone or download ],
 download ZIP archive of project,
